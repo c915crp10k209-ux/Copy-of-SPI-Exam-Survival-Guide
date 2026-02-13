@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+    <title>SPI Exam Survival Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@100;300;400;600;800&family=JetBrains+Mono:wght@100;400;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Cinzel', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        midnight: '#000000',
+                        'midnight-light': '#0a0a0a',
+                        'accent-gold': '#d4af37',
+                        'accent-cream': '#f4e4bc',
+                        'border-gold': 'rgba(212, 175, 55, 0.2)',
+                        gold: {
+                            50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d', 400: '#fbbf24', 500: '#d4af37', 600: '#b49431', 700: '#947a28', 800: '#735f1f', 900: '#544617',
+                        },
+                        space: {
+                            800: '#1a1a24',
+                            900: '#0a0a0a',
+                            950: '#050505',
+                            1000: '#000000',
+                        },
+                        acoustic: {
+                            blue: '#38bdf8',
+                            emerald: '#10b981',
+                            red: '#ef4444',
+                            indigo: '#6366f1'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 8s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in': 'fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                        'scanline': 'scanline 12s linear infinite',
+                        'radar-sweep': 'radar-sweep 6s linear infinite',
+                        'blink': 'blink 5s infinite',
+                        'talking-vibrate': 'talking-vibrate 0.15s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                        'shimmer': 'shimmer 3s infinite linear',
+                        'orbit': 'orbit 20s linear infinite',
+                        'sonic-pulse': 'sonic-pulse 2s infinite',
+                    },
+                    keyframes: {
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-12px)' } },
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        scanline: { '0%': { transform: 'translateY(-100%)' }, '100%': { transform: 'translateY(100vh)' } },
+                        'radar-sweep': { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
+                        blink: { '0%, 90%, 100%': { transform: 'scaleY(1)' }, '95%': { transform: 'scaleY(0.1)' } },
+                        'talking-vibrate': { 
+                            '0%, 100%': { transform: 'translateY(0) scale(1)' }, 
+                            '50%': { transform: 'translateY(-1.5px) scale(1.01)' } 
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' }
+                        },
+                        orbit: {
+                            '0%': { transform: 'rotate(0deg) translateX(5px) rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg) translateX(5px) rotate(-360deg)' }
+                        },
+                        'sonic-pulse': {
+                            '0%': { boxShadow: '0 0 0 0 rgba(212, 175, 55, 0.4)' },
+                            '70%': { boxShadow: '0 0 0 20px rgba(212, 175, 55, 0)' },
+                            '100%': { boxShadow: '0 0 0 0 rgba(212, 175, 55, 0)' }
+                        }
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 10px 30px rgba(212, 175, 55, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --safe-area-inset-top: env(safe-area-inset-top, 0px);
+            --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        html, body {
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            color: #f4e4bc;
+            -webkit-tap-highlight-color: transparent;
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+            overscroll-behavior-y: none;
+            min-height: 100%;
+            width: 100%;
+            height: 100%;
+        }
+        
+        #root {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pt-safe { padding-top: var(--safe-area-inset-top); }
+        .pb-safe { padding-bottom: var(--safe-area-inset-bottom); }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(10, 10, 10, 0.7) 0%, rgba(0, 0, 0, 0.95) 100%);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .gold-text-gradient {
+            background: linear-gradient(135deg, #f4e4bc 0%, #d4af37 50%, #8c7121 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hud-label {
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            font-weight: 900;
+            font-size: 0.65rem;
+            color: rgba(212, 175, 55, 0.4);
+            font-style: italic;
+        }
+
+        .tactical-bracket::before, .tactical-bracket::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-color: rgba(212, 175, 55, 0.35);
+            pointer-events: none;
+        }
+        .tactical-bracket::before { top: 0; left: 0; border-top: 3px solid; border-left: 3px solid; }
+        .tactical-bracket::after { bottom: 0; right: 0; border-bottom: 3px solid; border-right: 3px solid; }
+        
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .narration-prominent {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(16, 185, 129, 0.1) 100%);
+            border: 2px solid #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .narration-prominent.active {
+            animation: sonic-pulse 2s infinite;
+            background: #d4af37;
+            color: black !important;
+            border-color: white;
+        }
+
+        /* Essential Mobile Fix: Ensures full scrollability */
+        .content-scroll-container {
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 12rem; /* Buffer for Navigation Dock */
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-markdown": "https://aistudiocdn.com/react-markdown@^10.1.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "convex/": "https://cdn.jsdelivr.net/npm/convex@^1.13.0/",
+    "convex/react": "https://cdn.jsdelivr.net/npm/convex@^1.13.0/dist/esm/react/index.js"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>

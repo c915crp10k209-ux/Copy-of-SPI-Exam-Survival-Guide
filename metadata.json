@@ -1,0 +1,7 @@
+{
+  "name": "Copy of SPI Exam Survival Guide",
+  "description": "An interactive, AI-powered study guide for the ARDMS Sonography Principles & Instrumentation (SPI) Exam. Features dynamic quizzes, mnemonic generators, and deep-dive explanations powered by Google Gemini.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
